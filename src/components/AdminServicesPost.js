@@ -1,15 +1,13 @@
-// import './rightProducts.css'
+// import './rightServices.css'
 import React, { useState } from 'react';
 
-
-function AddProducts(){
+function AddServices(){
 
     const [formData, setFormData] = useState({
         name: '',
         description: '',
         price: '',
-        image_url: '',
-        quantity_available: '',
+        
     });
 
     const handleChange = (e) => {
@@ -23,7 +21,7 @@ function AddProducts(){
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:3000/products', {
+            const response = await fetch('http://localhost:3000/services', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -31,28 +29,26 @@ function AddProducts(){
                 body: JSON.stringify(formData),
             });
             if (!response.ok) {
-                throw new Error('Failed to create product');
+                throw new Error('Failed to create service');
             }
             // Optionally, you can reset the form fields here
             setFormData({
                 name: '',
                 description: '',
-                price: '',
-                image_url: '',
-                quantity_available: ''
+                price: ''
             });
         } catch (error) {
-            console.error('Error creating product:', error);
+            console.error('Error creating service:', error);
         }
     };
 
     return(
-        <div className="products-post">
-            <div className="products-form">
-            <span>Add A Product</span>
-            <form onSubmit={handleSubmit}>
+        <div className="services-post">
+            <div className="services-form">
+                <span>Add A Service</span>
+                <form onSubmit={handleSubmit}>
                     <div>
-                        <label htmlFor="name">Product Name</label>
+                        <label htmlFor="name">Service Name</label>
                         <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Name" required />
                     </div>
                     <div>
@@ -63,20 +59,12 @@ function AddProducts(){
                         <label htmlFor="price">Price</label>
                         <input type="number" name="price" value={formData.price} onChange={handleChange} placeholder="Price" required />
                     </div>
-                    <div>
-                        <label htmlFor="quantity_available">Quantity</label>
-                        <input type="number" name="quantity_available" value={formData.quantity_available} onChange={handleChange} placeholder="Quantity Available" required />
-                    </div>
-                    <div>
-                        <label htmlFor="image_url">Image Url</label>
-                        <input type="text" name="image_url" value={formData.image_url} onChange={handleChange} placeholder="Image URL" required />
-                    </div>
-                    <button type="submit">Add Product</button>
+                    
+                    <button type="submit">Add Service</button>
                 </form>
             </div>
-
         </div>
     )
 }
 
-export default AddProducts;
+export default AddServices;
