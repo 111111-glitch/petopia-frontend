@@ -59,6 +59,7 @@ function Services() {
 
     return (
         <div className='services'>
+            <h1>Services Page</h1>
             <div className="flexColStart p-head">
                 <span className='orangeText'>Best Choices</span>
                 <span className='primaryText'>Popular Categories</span>
