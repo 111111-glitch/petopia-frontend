@@ -12,7 +12,7 @@
 
 
 import React, { useContext, useEffect, useState } from "react";
-import { basketContext } from "/.ServiceContext"
+import { basketContext } from "./context/ServiceContext";
 
 
 function Services() {
