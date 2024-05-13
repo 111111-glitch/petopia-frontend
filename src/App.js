@@ -1,10 +1,10 @@
 import './App.css';
-import Navbar from './components/Navbar';
+import Navbar from './components/client/Navbar';
 import Home from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register';
-import Products from './components/Products';
-import Services from './components/Services';
+import Products from './components/client/Products';
+import Services from './components/client/Services';
 import { Routes, Route } from 'react-router-dom';
 
 function App() {
