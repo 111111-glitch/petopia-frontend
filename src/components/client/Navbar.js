@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-
+import './Navbar.css';
 const Navbar = () => {
     const location = useLocation();
 
@@ -38,11 +38,6 @@ const Navbar = () => {
                                 HOME
                             </NavLink>
                         </li>
-                        <li className="nav-item">
-                            <NavLink className="nav-link" to="/login">
-                                LOGIN
-                            </NavLink>
-                        </li>
                         
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/products">
@@ -54,8 +49,7 @@ const Navbar = () => {
                                 SERVICES
                             </NavLink>
                         </li>
-                    </ul>
-                    <form className="d-flex">
+                        <form className="d-flex">
                         <input
                             className="form-control ml-2"
                             type="search"
@@ -66,6 +60,18 @@ const Navbar = () => {
                             Search
                         </button>
                     </form>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" to="/cart">
+                                CART
+                            </NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" to="/login">
+                                LOGIN
+                            </NavLink>
+                        </li>
+                    </ul>
+                    
                 </div>
             </div>
         </nav>
