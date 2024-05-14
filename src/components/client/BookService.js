@@ -1,14 +1,12 @@
 // this is the cart for booking
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect} from 'react';
 import { basketContext } from "./component/ServiceContext";
 import { NavLink } from "react-router-dom";
 
 function ClientBasket() {
     const { state, dispatch } = useContext(basketContext);
 
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
-    const [success, setSuccess] = useState(false);
+    
 
     useEffect(() => {
         // Any side effects can be handled here, if needed
@@ -19,9 +17,7 @@ function ClientBasket() {
     }, 0);
 
     const handlePlaceOrder = async () => {
-        setLoading(true);
-        setError(null);
-        setSuccess(false);
+        
         
         try {
             const res = await fetch('/serviceorders', {
@@ -38,17 +34,16 @@ function ClientBasket() {
             });
 
             if (res.ok) {
-                setSuccess(true);
+                
                 // Clear the cart after successful order placement
                 dispatch({ type: 'CLEAR_CART' });
             } else {
-                setError('Failed to place order');
+                console.error('Failed to place order');
             }
         } catch (error) {
             console.error('Error:', error);
-            setError('An error occurred while processing your request');
-        } finally {
-            setLoading(false);
+            
+        
         }
     };
 
