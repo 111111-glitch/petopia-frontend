@@ -21,7 +21,7 @@ function AddServices(){
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:3000/services', {
+            const response = await fetch('/services', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

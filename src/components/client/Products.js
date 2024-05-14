@@ -20,7 +20,7 @@ function ClientProducts(){
     const [sortOption, setSortOption] = useState('Default'); // State to hold the current sorting option
 
     useEffect(() => {
-        fetch("http://localhost:3000/products")
+        fetch("/products")
           .then(resp => resp.json())
           .then((data) => {
             setProducts(data);
@@ -85,7 +85,7 @@ const { dispatch } = globalState;
                         </span>
                         <span className='primaryText'>{product.name}</span>
                         <span className='secondaryText'>{product.description}</span>
-                        <button className="p-buttons" onClick={() => dispatch({type:'ADD', payload:product})}>Add to cart</button>
+                        <button className="add-to-cart-btn" onClick={() => dispatch({type:'ADD', payload:product})}>Add to cart</button>
                     </div>
                 ))}
             </div>

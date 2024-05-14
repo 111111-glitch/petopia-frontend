@@ -23,7 +23,7 @@ function ClientCart() {
         setSuccess(false);
         
         try {
-            const res = await fetch('http://127.0.0.1:5555/orders', {
+            const res = await fetch('/orders', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

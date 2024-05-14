@@ -23,7 +23,7 @@ function AddProducts(){
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:3000/products', {
+            const response = await fetch('/products', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

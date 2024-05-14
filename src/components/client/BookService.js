@@ -24,7 +24,7 @@ function ClientBasket() {
         setSuccess(false);
         
         try {
-            const res = await fetch('http://127.0.0.1:5555/serviceorders', {
+            const res = await fetch('/serviceorders', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
