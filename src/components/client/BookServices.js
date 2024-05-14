@@ -1,6 +1,6 @@
 // this is the cart for booking
 import { useContext, useEffect} from 'react';
-import { basketContext } from "./component/ServiceContext";
+import { basketContext } from "./component/context/ServiceContext";
 import { NavLink } from "react-router-dom";
 
 function ClientBasket() {
@@ -90,7 +90,7 @@ function ClientBasket() {
                             <button className='button' onClick={handlePlaceOrder}>Checkout</button>
                         </div>
                         <div className="continue-shopping">
-                            <NavLink className="component-nav-link" to='/component/products'> Continue Shopping</NavLink>
+                            <NavLink className="component-nav-link" to='/component/services'> Continue Shopping</NavLink>
                         </div>
                     </div>
                 </>

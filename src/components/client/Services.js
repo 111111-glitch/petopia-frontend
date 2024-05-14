@@ -15,6 +15,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { basketContext } from "../context/ServiceContext";
 
 
+
 function Services() {
     const [services, setServices] = useState([]);
     const [sortOption, setSortOption] = useState('Default'); // State to hold the current sorting option
@@ -83,7 +84,7 @@ function Services() {
                         </span>
                         <span className='primaryText'>{service.name}</span>
                         <span className='secondaryText'>{service.description}</span>
-                        <button className="p-buttons" onClick={() => dispatch({type:'ADD', payload:service})}>BOOK NOW</button>
+                        <button className="p-buttons" to="/components/client/BookServices" onClick={() => dispatch({type:'ADD', payload:service})}>BOOK NOW</button>
                     </div>
                 ))}
             </div>
