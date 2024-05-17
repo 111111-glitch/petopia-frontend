@@ -61,7 +61,7 @@ const Services = () => {
         <span className='orangeText'>Best Choices</span>
         <span className='primaryText'>Popular Categories</span>
       </div>
-      <h2>SERVICES</h2>
+      <h2>DISPLAY BY</h2>
       <select value={sortOption} onChange={handleSort}>
         <option value="Default">Default Sorting</option>
         <option value="Title">Sort By Name</option>
