@@ -49,9 +49,9 @@ function DeleteService() {
             </div>
             <div className="services-container">
                 {services.map((service) => (
-                    <div className="flexColStart p-card" key={service.id}>
+                    <div className="flexColStart s-card" key={service.id}>
                         <img src={service.image_url} alt="category"/>
-                        <span className="secondaryText p-price">
+                        <span className="secondaryText s-price">
                             <span style={{color:"gold"}}>kes</span>
                             <span>{service.price}</span>
                         </span>
