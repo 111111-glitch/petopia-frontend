@@ -42,7 +42,7 @@ function DeleteProduct() {
         <div className='delete-products'>
             
             <div className="delete-products-content">
-                <p>Showing all {products.length} Products results</p>
+                <p className="p-font">Showing all {products.length} Products results</p>
                 
             </div>
             <div className="delete-products-container">
