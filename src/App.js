@@ -18,6 +18,8 @@ function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/products' element={<Products />} />
+        <Route path='/Cart' element={<Cart />} />
+        <Route path='/Checkout' element={<Checkout />} />
         <Route path='/services' element={<Services />} />
       </Routes>
     </div>
