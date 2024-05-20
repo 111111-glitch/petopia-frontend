@@ -21,9 +21,9 @@ const Services = () => {
     setSelectedService(service);
   };
 
-  const handleAddToBook = (service) => {
-    // Implement add to cart functionality for services
-    console.log('Added to cart:', service);
+  const handleAddToCart = (product) => {
+    setCartItems([...cartItems, product]);
+    console.log('Added to cart:', product);
   };
 
   const handleDisplay = (event) => {
@@ -76,7 +76,9 @@ const Services = () => {
             {selectedService && selectedService.id === service.id && (
               <div>
                 <p>{service.description}</p>
-                <button className='service-button' onClick={() => handleAddToBook(service)}>BOOK</button>
+                <button onClick={() => handleAddToCart(product)}>
+                <img src="/images/cart.png" alt="Cart" style={iconStyle} />
+                  Add to Cart</button>
               </div>
             )}
           </div>

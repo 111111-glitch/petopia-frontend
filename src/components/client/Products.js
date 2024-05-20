@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Cart from './Cart';
+import './Product.css';
+
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -8,22 +9,15 @@ const Products = () => {
   const [sortOption, setSortOption] = useState('Default');
 
   useEffect(() => {
-    // Fetch products from the backend
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch('/userproducts');
-        if (response.ok) {
-          const data = await response.json();
-          setProducts(data);
-        } else {
-          console.error('Failed to fetch products');
-        }
-      } catch (error) {
-        console.error('Error:', error);
-      }
-    };
-    fetchProducts();
-  }, []);
+    
+
+  fetch('/userproducts')
+  .then(response =>response.json())
+  .then(data =>{
+    const filteredProducts= data.filter(item => item.type === 'product');
+    setProducts(filteredProducts);
+  });
+},[]);
 
   const handleProductClick = (product) => {
     setSelectedProduct(product);
@@ -34,9 +28,9 @@ const Products = () => {
     console.log('Added to cart:', product);
   };
 
-  const handleRemoveFromCart = (product) => {
-    setCartItems(cartItems.filter((item) => item.id !== product.id));
-  };
+  // const handleRemoveFromCart = (product) => {
+  //   setCartItems(cartItems.filter((item) => item.id !== product.id));
+  // };
 
   const handleSort = (event) => {
     const option = event.target.value;
@@ -71,17 +65,18 @@ const Products = () => {
       <select value={sortOption} onChange={handleSort}>
         <option value="Default">Default Sorting</option>
         <option value="Title">Sort By Name</option>
-        <option value="Price-low">Sort By Price: low to high</option>
+        <option value="Price-low">By Price: low to high</option>
         <option value="Price-high">Sort By Price: high to low</option>
       </select>
       <div className="product-grid">
         {products.map((product) => (
           <div key={product.id}>
             <div onClick={() => handleProductClick(product)}>
+            <img src={product.image_url} alt={product.name} />
               <h3>{product.name}</h3>
               <p>{product.description}</p>
               <p>Price: ${product.price}</p>
-              <img src={product.image_url} alt={product.name} />
+              
             </div>
             {selectedProduct && selectedProduct.id === product.id && (
               <div>
@@ -93,7 +88,7 @@ const Products = () => {
           </div>
         ))}
       </div>
-      <Cart cartItems={cartItems} onRemoveFromCart={handleRemoveFromCart} />
+      
     </div>
   );
 };
