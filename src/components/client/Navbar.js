@@ -1,5 +1,4 @@
 import React from 'react';
-import './Navbar.css';
 import { NavLink, useLocation } from 'react-router-dom';
 import './Navbar.css';
 const Navbar = () => {
@@ -17,6 +16,9 @@ const Navbar = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
+                <NavLink className="navbar-brand" to="#">
+                    <b>PETOPIA</b>
+                </NavLink>
                 <button
                     className="navbar-toggler"
                     type="button"
@@ -30,47 +32,44 @@ const Navbar = () => {
                 </button>
 
                 <div className="collapse navbar-collapse" id="navbarScroll">
-                    <ul className="navbar-nav mx-auto my-2 my-lg-0 navbar-nav-scroll" style={{ '--bs-scroll-height': '200px' }}>
-                    
-                        <ul className="nav-item">
+                    <ul className="navbar-nav ml-auto my-2 my-lg-0 navbar-nav-scroll" style={{ '--bs-scroll-height': '100px' }}>
+                        <li className="nav-item">
                             <NavLink className="nav-link active" aria-current="page" to="/">
                                 HOME
                             </NavLink>
-                        </ul>
-                        <ul className="nav-item">
                         </li>
                         
                         <li className="nav-item">
                             <NavLink className="nav-link" to="/products">
                                 PRODUCTS
                             </NavLink>
-                        </ul>
-                        <ul className="nav-item">
+                        </li> 
+                        <li>   
                             <NavLink className="nav-link" to="/services">
                                 SERVICES
                             </NavLink>
-                        </ul>
-                        
-                        <ul className="nav-item">
-                            <div className="search">
-                                <input placeholder="Search..." type="text" />
-                                
-                            </div>
-                        </ul>
-                        <ul className="nav-item">
-                            <NavLink className="nav-link" to="/Cart">
-                            <i class="fa-solid fa-cart-shopping"></i>
-
+                        </li>
+                        <form className="d-flex">
+                        <input
+                            className="form-control ml-2"
+                            type="search"
+                            placeholder="Search"
+                            aria-label="Search"
+                        />
+                        <button className="btn btn-outline-success" type="submit">
+                            Search
+                        </button>
+                    </form>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" to="/cart">
+                                CART
                             </NavLink>
-                        </ul>
-                        
-                        <ul className="nav-item">
-                            <NavLink className="nav-link" to="/ Login">
-                            <i class="fa-solid fa-user"></i>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" to="/login">
+                                LOGIN
                             </NavLink>
-                        </ul>
-                       
-                        
+                        </li>
                     </ul>
                     
                 </div>
