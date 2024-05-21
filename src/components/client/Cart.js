@@ -1,6 +1,7 @@
-// import React from 'react'
-
-// const Cart = () => {
+import React from 'react';
+import './Cart.css'
+import { NavLink } from 'react-router-dom'; // Assuming you're using React Router for navigation
+// const ClientCartPage = ({ state, dispatch, total, handlePlaceOrder }) => {
 //     return (
 //         <div>
 //             <h1>Cart Page</h1>
@@ -63,7 +64,7 @@ function ClientCart() {
 
     return (
         <div className="client-cart-page">
-            {state.length === 0 ? (
+            {state && state.length === 0 ? (
                 <div className="empty-cart">
                     <h2>Your cart is empty</h2>
                     <img src="https://cdn.dribbble.com/users/2046015/screenshots/4591856/media/99db7af8c3d839dd65017f76ae434785.gif" alt="" />
@@ -78,32 +79,30 @@ function ClientCart() {
                             <h4>Quantity</h4>
                             <h4>Total</h4>
                         </div>
-                        {state.map((item, index) => {
-                            return (
-                                <div className="client-cart-card" key={index}>
-                                    <div className="product-details">
-                                        <img src={item.image_url} alt={item.name} />
-                                        <div className="product-name">
-                                            <p>{item.name}</p>
-                                            <button onClick={() => dispatch({ type: 'REMOVE', payload: item })}>Remove</button>
-                                        </div>   
-                                    </div>
-                                    <p>${item.price}</p>
-                                    <div className="quantity">
-                                        <button onClick={() => {
-                                            if (item.quantity > 1) {
-                                                dispatch({ type: 'DECREASE', payload: item });
-                                            } else {
-                                                dispatch({ type: 'REMOVE', payload: item });
-                                            }
-                                        }}>-</button>
-                                        <span>{item.quantity}</span>
-                                        <button onClick={() => dispatch({ type: 'INCREASE', payload: item })}>+</button>
-                                    </div>
-                                    <p className='total-price'>${item.quantity * item.price}</p>
+                        {state && state.map((item, index) => (
+                            <div className="client-cart-card" key={index}>
+                                <div className="product-details">
+                                    <img src={item.image_url} alt={item.name} />
+                                    <div className="product-name">
+                                        <p>{item.name}</p>
+                                        <button onClick={() => dispatch({ type: 'REMOVE', payload: item })}>Remove</button>
+                                    </div>   
                                 </div>
-                            );
-                        })}
+                                <p>${item.price}</p>
+                                <div className="quantity">
+                                    <button onClick={() => {
+                                        if (item.quantity > 1) {
+                                            dispatch({ type: 'DECREASE', payload: item });
+                                        } else {
+                                            dispatch({ type: 'REMOVE', payload: item });
+                                        }
+                                    }}>-</button>
+                                    <span>{item.quantity}</span>
+                                    <button onClick={() => dispatch({ type: 'INCREASE', payload: item })}>+</button>
+                                </div>
+                                <p className='total-price'>${item.quantity * item.price}</p>
+                            </div>
+                        ))}
                         <div className="total">
                             <h4>Subtotal</h4>
                             <h4>${total}</h4>
@@ -112,7 +111,7 @@ function ClientCart() {
                             <button className='button' onClick={handlePlaceOrder}>Checkout</button>
                         </div>
                         <div className="continue-shopping">
-                            <NavLink className="client-nav-link" to='/client/products'> Continue Shopping</NavLink>
+                            <NavLink className="Products-nav-link" to='/products'> Continue Shopping</NavLink>
                         </div>
                     </div>
                 </>
@@ -121,4 +120,4 @@ function ClientCart() {
     );
 }
 
-export default ClientCart;
+export default ClientCartPage;
