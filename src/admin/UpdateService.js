@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
-import './PatchServices.css';
+import './UpdateService.css';
 
-const PatchProduct = () => {
+
+const UpdateService = () => {
     const [products, setProducts] = useState([]);
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [updatedProduct, setUpdatedProduct] = useState({
@@ -124,11 +125,11 @@ const PatchProduct = () => {
                         <label>Type:</label>
                         <input type="text" name="type" value={updatedProduct.type} onChange={handleChange} required />
                     </div>
-                    <button type="submit">Update Product</button>
+                    <button type="submit">Update Service</button>
                 </form>
             )}
         </div>
     );
 };
 
-export default PatchProduct;
+export default UpdateService;

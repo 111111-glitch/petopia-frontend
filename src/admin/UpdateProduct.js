@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-import './PatchProduct.css';
+import './UpdateProduct.css';
 
-const PatchProduct = () => {
+const UpdateProduct = () => {
     const [products, setProducts] = useState([]);
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [updatedProduct, setUpdatedProduct] = useState({
@@ -131,4 +131,4 @@ const PatchProduct = () => {
     );
 };
 
-export default PatchProduct;
+export default UpdateProduct;
