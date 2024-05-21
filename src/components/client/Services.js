@@ -51,10 +51,10 @@ const Services = () => {
 
   return (
     <div>
-      <div className="flexColStart s-head">
+      {/* <div className="flexColStart s-head">
         <span className='orangeText'>Best Choices</span>
         <span className='primaryText'>Popular Categories</span>
-      </div>
+      </div> */}
      <h2>DISPLAY BY</h2>
       <select value={displayOption} onChange={handleDisplay}>
         <option value="Default">Default Display</option>

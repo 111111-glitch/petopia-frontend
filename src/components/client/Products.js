@@ -57,10 +57,10 @@ const Products = () => {
 
   return (
     <div>
-      <div className="flexColStart p-head">
+      {/* <div className="flexColStart p-head">
         <span className='orangeText'>Best Choices</span>
         <span className='primaryText'>Popular Categories</span>
-      </div>
+      </div> */}
       <h2>PRODUCTS</h2>
       <select value={sortOption} onChange={handleSort}>
         <option value="Default">Default Sorting</option>
