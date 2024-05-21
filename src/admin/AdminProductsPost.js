@@ -1,4 +1,4 @@
-// import './rightProducts.css'
+
 import React, { useState } from 'react';
 
 

@@ -33,22 +33,22 @@ const Navbar = () => {
 
                 <div className="collapse navbar-collapse" id="navbarScroll">
                     <ul className="navbar-nav ml-auto my-2 my-lg-0 navbar-nav-scroll" style={{ '--bs-scroll-height': '100px' }}>
-                        <li className="nav-item">
+                        <ul className="nav-item">
                             <NavLink className="nav-link active" aria-current="page" to="/">
                                 HOME
                             </NavLink>
-                        </li>
+                        </ul>
                         
-                        <li className="nav-item">
+                        <ul className="nav-item">
                             <NavLink className="nav-link" to="/products">
                                 PRODUCTS
                             </NavLink>
-                        </li> 
-                        <li>   
+                        </ul> 
+                        <ul>   
                             <NavLink className="nav-link" to="/services">
                                 SERVICES
                             </NavLink>
-                        </li>
+                        </ul>
                         <form className="d-flex">
                         <input
                             className="form-control ml-2"
@@ -60,16 +60,16 @@ const Navbar = () => {
                             Search
                         </button>
                     </form>
-                        <li className="nav-item">
+                        <ul className="nav-item">
                             <NavLink className="nav-link" to="/cart">
                                 CART
                             </NavLink>
-                        </li>
-                        <li className="nav-item">
+                        </ul>
+                        <ul className="nav-item">
                             <NavLink className="nav-link" to="/login">
                                 LOGIN
                             </NavLink>
-                        </li>
+                        </ul>
                     </ul>
                     
                 </div>

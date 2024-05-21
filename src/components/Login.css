@@ -13,7 +13,7 @@
     justify-content: center; 
     align-items: center; 
     position: relative;
-    background-image: url(https://cff2.earth.com/uploads/2022/07/08123100/Pets-scaled.jpg);
+    background: #f5f5f5;
 }
 
 .circle:first-child {

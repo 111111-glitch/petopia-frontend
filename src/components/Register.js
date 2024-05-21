@@ -50,8 +50,6 @@ function Register() {
     return (
        <div className="bodyReg">
            <div className="container">
-            <div className="circle"></div>
-            <div className="circle"></div>
             <div className="form-container">
                 <h1>Welcome to Petopia</h1>
                 <form method="POST">

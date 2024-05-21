@@ -1,27 +1,13 @@
-// import React from 'react'
-
-// const Services = () => {
-//     return (
-//         <div>
-//             <h1>Services Page</h1>
-//         </div>    
-//     )
-// }
-
-// export default Services
-
-
 import React, { useContext, useEffect, useState } from "react";
-import { basketContext } from "../context/ServiceContext";
-
-
+import './Services.css'; // Make sure to update your CSS file accordingly
+import { cartContext } from "../context/ServiceContext";
 
 function Services() {
     const [services, setServices] = useState([]);
     const [sortOption, setSortOption] = useState('Default'); // State to hold the current sorting option
 
     useEffect(() => {
-        fetch("/services")
+        fetch("http://127.0.0.1:5555/services")
             .then(resp => resp.json())
             .then((data) => {
                 setServices(data);
@@ -31,8 +17,8 @@ function Services() {
             });
     }, []);
 
-    const globalState = useContext(basketContext) || { dispatch: () => {} };
-    const { dispatch } = globalState;
+    const globalState = useContext(cartContext);
+    const dispatch = globalState?.dispatch;
 
     // Function to handle sorting based on the selected option
     const handleSort = (event) => {
@@ -59,13 +45,12 @@ function Services() {
     };
 
     return (
-        <div className='services'>
-            <h1>Services Page</h1>
+        <div className='client-services'>
             <div className="flexColStart p-head">
                 <span className='orangeText'>Best Choices</span>
                 <span className='primaryText'>Popular Categories</span>
             </div>
-            <div className="services-content">
+            <div className="client-services-content">
                 <p>Showing all {services.length} results</p>
                 <select value={sortOption} onChange={handleSort}>
                     <option value="Default">Default Sorting</option>
@@ -74,7 +59,7 @@ function Services() {
                     <option value="Price-high">Sort By Price: high to low</option>
                 </select>
             </div>
-            <div className="services-container">
+            <div className="client-services-container">
                 {services.map((service) => (
                     <div className="flexColStart p-card" key={service.id}>
                         <img src={service.image_url} alt="category"/>
@@ -84,12 +69,14 @@ function Services() {
                         </span>
                         <span className='primaryText'>{service.name}</span>
                         <span className='secondaryText'>{service.description}</span>
-                        <button className="p-buttons" to="/components/client/BookServices" onClick={() => dispatch({type:'ADD', payload:service})}>BOOK NOW</button>
+                        <button className="p-buttons" onClick={() => dispatch && dispatch({ type: 'ADD', payload: service })}>
+                            BOOK NOW
+                        </button>
                     </div>
                 ))}
             </div>
-         </div>
-    )
+        </div>
+    );
 }
 
 export default Services;

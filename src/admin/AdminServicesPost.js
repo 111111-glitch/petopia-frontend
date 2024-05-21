@@ -1,4 +1,4 @@
-// import './rightServices.css'
+
 import React, { useState } from 'react';
 
 function AddServices(){
@@ -7,7 +7,7 @@ function AddServices(){
         name: '',
         description: '',
         price: '',
-        
+        image_url:'',   
     });
 
     const handleChange = (e) => {

@@ -12,7 +12,7 @@
 
 
 import React, {useContext,  useEffect, useState } from "react";
-// import './Product.css';
+import './Product.css';
 import { cartContext } from "../context/Context";
 
 function ClientProducts(){
