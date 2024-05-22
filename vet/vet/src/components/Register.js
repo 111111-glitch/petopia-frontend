@@ -107,10 +107,14 @@ function Register() {
                         </select>
                     </div>
                     
-                    <span className="register-span">Already Registered? <NavLink to='/login'>Log in</NavLink><br /> <br /></span>
+                    <span className="register-span">Already Registered? <NavLink to='/login'><u>Log in</u></NavLink><br /> <br /></span>
                     <button type="submit" className="btn btn-primary" id="register" name="register" onClick={postData}>Register</button>
                 </form>
             </div>
+            
+        </div>
+        <div className="image-container">
+          <img src="https://i.pinimg.com/564x/24/1a/e1/241ae18e116a69b28593a02eed8455bf.jpg" alt="Petopia" />
         </div>
        </div>
     );

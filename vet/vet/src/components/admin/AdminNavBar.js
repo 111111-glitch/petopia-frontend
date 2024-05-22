@@ -1,7 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 function Navbar2() {
+  const location = useLocation();
+  const isLoginPage = location.pathname === '/login';
+  const isRegisterPage = location.pathname === '/register';
+
+  // Render Navbar2 only if not on login or register page
+  if (isLoginPage || isRegisterPage) {
+    return null;
+  }
+
   return (
     <nav className="navbar navbar-dark bg-dark">
       <div className="container">

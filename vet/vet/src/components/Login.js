@@ -49,27 +49,36 @@ function Login() {
   };
 
   return (
-    <>
-      <section>
-       <div className="containerLog">
-        <div className="circle"></div>
-        <div className="circle"></div>
-       <div className="glass-form-container">
-        <h2>Welcome Back!</h2>
-        <p>Login to your account</p>
+    <section>
+      <div className="containerLog">
+       
+        <div className="glass-form-container">
+          <h2>Welcome Back!</h2>
+          <p>Login to your account</p>
           <div className="form-box">
             <form method="POST">
               <div className="form-group">
                 <label htmlFor="email">Email</label>
                 <input
-                  type="email" className="form-control" id="email" name="email" placeholder="Enter Email" value={email}
+                  type="email"
+                  className="form-control"
+                  id="email"
+                  name="email"
+                  placeholder="Enter Email"
+                  value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
 
               <div className="form-group">
                 <label htmlFor="password">Password</label>
-                <input type="password" className="form-control" id="password" name="password" placeholder="Enter Password" value={password}
+                <input
+                  type="password"
+                  className="form-control"
+                  id="password"
+                  name="password"
+                  placeholder="Enter Password"
+                  value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
@@ -77,13 +86,16 @@ function Login() {
                 Login
               </button>
               <br />
-              <span className="register-span">New to Petopia? </span><NavLink to="/register">Register here</NavLink>
+              <span className="register-span">New to Petopia? </span>
+              <NavLink to="/register"><u>Register here</u></NavLink>
             </form>
           </div>
         </div>
-       </div>
-      </section>
-    </>
+        <div className="image-container">
+          <img src="https://i.pinimg.com/564x/24/1a/e1/241ae18e116a69b28593a02eed8455bf.jpg" alt="Petopia" />
+        </div>
+      </div>
+    </section>
   );
 }
 
