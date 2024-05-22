@@ -18,10 +18,8 @@ function AdminLogin() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // Implement logic to send form data to the server for admin login
-
+        
         try {
-            // Example: Sending form data to the server for authentication
             const response = await fetch('/adminLogin', {
                 method: 'POST',
                 headers: {
@@ -33,16 +31,19 @@ function AdminLogin() {
             if (response.ok) {
                 const userData = await response.json();
                 localStorage.setItem("access_token", userData.access_token);
-                // Assuming the server returns user data including roles
-
-                // Check user roles to determine redirection
-                const role = userData.role;
-                console.log("this is the role", role);
-
-                // Check user role and redirect accordingly
-                navigate('/admin')
+                
+                // Check if the user is an admin
+                if (userData.role === 'admin') {
+                    // Update the isAdmin state to true
+                    setIsAdmin(true);
+                    // Redirect to admin dashboard
+                    navigate('/admin');
+                } else {
+                    // Handle non-admin user
+                    console.error('User is not an admin');
+                }
             } else {
-                // Handle errors, perhaps show an error message
+                // Handle login failure
                 console.error('Login failed:', response.statusText);
             }
         } catch (error) {

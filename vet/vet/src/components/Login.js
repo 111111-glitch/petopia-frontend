@@ -12,39 +12,45 @@ function UserLogin() {
   const navigate = useNavigate(); // Initialize useHistory
 
   const handleChange = (e) => {
-      setFormData({
-          ...formData,
-          [e.target.name]: e.target.value
-      });
-  };
+    setFormData({
+        ...formData,
+        [e.target.name]: e.target.value
+    });
+};
 
   const handleSubmit = async (e) => {
-      e.preventDefault();
-      // Implement logic to send form data to the server for admin login
+    e.preventDefault();
+    
+    try {
+        const response = await fetch('/userLogin', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        });
 
-      try {
-          // Example: Sending form data to the server for authentication
-          const response = await fetch('/userlogin', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(formData)
-          });
-
-          if (response.ok) {
-              const userData = await response.json();
-              localStorage.setItem("access_token", userData.access_token);
-              // Assuming the server returns user data including roles
-
-              navigate('/client')
-          } else {
-              // Handle errors, perhaps show an error message
-              console.error('Login failed:', response.statusText);
-          }
-      } catch (error) {
-          console.error('Error occurred during login:', error);
-      }
+        if (response.ok) {
+            const userData = await response.json();
+            localStorage.setItem("access_token", userData.access_token);
+            
+            // Check if the user is a client
+            if (userData.role === 'client') {
+                // Update the isClient state to true
+                setIsAdmin(true);
+                // Redirect to client dashboard
+                navigate('/client');
+            } else {
+                // Handle non-client user
+                console.error('User is not an client');
+            }
+        } else {
+            // Handle login failure
+            console.error('Login failed:', response.statusText);
+        }
+    } catch (error) {
+        console.error('Error occurred during login:', error);
+    }
   };
 
   return (
