@@ -2,50 +2,49 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./Login.css";
 
-function Login() {
-  const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+function UserLogin() {
+  const [formData, setFormData] = useState({
+      username: '',
+      password: ''
+  });
 
-  const setData = async (e) => {
-    e.preventDefault();
+  const navigate = useNavigate(); // Initialize useHistory
 
-    try {
-      const res = await fetch("/userLogin", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
+  const handleChange = (e) => {
+      setFormData({
+          ...formData,
+          [e.target.name]: e.target.value
       });
+  };
 
-      if (res.ok) {
-        const data = await res.json();
-        console.log("this is the data", data);
-        localStorage.setItem("access_token", data.access_token);
-        //window.alert("Login successful");
+  const handleSubmit = async (e) => {
+      e.preventDefault();
+      // Implement logic to send form data to the server for admin login
 
-        // Retrieve role from response data
-        const role = data.role;
-        console.log("this is the role", role);
+      try {
+          // Example: Sending form data to the server for authentication
+          const response = await fetch('/userlogin', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(formData)
+          });
 
-        // Check user role and redirect accordingly
-        if (role === "admin") {
-          navigate("/admin");
-        } else {
-          navigate("/client");
-        }
-      } else {
-        window.alert("Login failed, Invalid credentials");
+          if (response.ok) {
+              const userData = await response.json();
+              localStorage.setItem("access_token", userData.access_token);
+              // Assuming the server returns user data including roles
+
+              navigate('/client')
+          } else {
+              // Handle errors, perhaps show an error message
+              console.error('Login failed:', response.statusText);
+          }
+      } catch (error) {
+          console.error('Error occurred during login:', error);
       }
-    } catch (error) {
-      console.error("Error:", error);
-      window.alert("An error occurred while processing your request");
-    }
   };
 
   return (
@@ -56,17 +55,17 @@ function Login() {
           <h2>Welcome Back!</h2>
           <p>Login to your account</p>
           <div className="form-box">
-            <form method="POST">
+            <form method="POST" onSubmit={handleSubmit}>
               <div className="form-group">
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email">Username</label>
                 <input
-                  type="email"
+                  type="text"
                   className="form-control"
-                  id="email"
-                  name="email"
-                  placeholder="Enter Email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  id="username"
+                  name="username"
+                  placeholder="Enter Username"
+                  value={formData.username}
+                  onChange={handleChange}
                 />
               </div>
 
@@ -78,11 +77,11 @@ function Login() {
                   id="password"
                   name="password"
                   placeholder="Enter Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={formData.password}
+                  onChange={handleChange}
                 />
               </div>
-              <button type="submit" className="btn btn-primary" id="login" name="login" onClick={setData}>
+              <button type="submit" className="btn btn-primary">
                 Login
               </button>
               <br />
@@ -99,4 +98,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default UserLogin;
