@@ -84,7 +84,7 @@ const Items=()=>{
       </select>
       <div className="product-grid">
         {products.map((product) => (
-          <div key={product.id}>
+          <div key={product.id} className="product-item">
             <div onClick={() => handleProductClick(product)}>
               <img src={product.image_url} alt={product.name} />
               <h3>{product.name}</h3>
@@ -100,7 +100,6 @@ const Items=()=>{
           </div>
         ))}
       </div>
-      
     </div>
   );
 };
