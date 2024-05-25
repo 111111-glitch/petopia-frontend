@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './SearchBar.css';
-
 
 function SearchBar() {
   const [searchParams, setSearchParams] = useState({
@@ -9,6 +9,8 @@ function SearchBar() {
     type: ''
   });
   const [products, setProducts] = useState([]);
+  const [searchStatus, setSearchStatus] = useState('');
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setSearchParams({
@@ -22,6 +24,18 @@ function SearchBar() {
     const response = await fetch(`/userproducts?${query}`);
     const data = await response.json();
     setProducts(data);
+  // };
+
+  // add
+  if (data.length === 0) {
+    setSearchStatus('No results found');
+  } else {
+    setSearchStatus('');
+  }
+};
+
+  const handleProductClick = (product) => {
+    navigate(`/product/${product.id}`);
   };
 
   return (
@@ -35,20 +49,17 @@ function SearchBar() {
         onChange={handleChange}
       />
       
-      <input
-        type="text"
-        name="type"
-        placeholder="Type"
-        value={searchParams.type}
-        onChange={handleChange}
-      />
       <button onClick={handleSearch}>Search</button>
       <div>
         <h3>Results:</h3>
+        {searchStatus && <p>{searchStatus}</p>}
         <ul>
           {products.map(product => (
-            <li key={product.id}>
-              {product.name} - {product.description} - ${product.price}
+            <li key={product.id} onClick={() => handleProductClick(product)}>
+              <img src={product.image_url} alt={product.name} width="50" height="50" />
+              <h3>{product.name}</h3>
+              <p>{product.description}</p>
+              <p>${product.price}</p>
             </li>
           ))}
         </ul>
@@ -58,5 +69,3 @@ function SearchBar() {
 }
 
 export default SearchBar;
-
-

@@ -32,6 +32,7 @@ const ProductDetail = () => {
     <div>
       {product ? (
         <div>
+          <img src={product.image_url} alt={product.name} />
           <h1>{product.name}</h1>
           <p>{product.description}</p>
           <p>Price: ${product.price}</p>
