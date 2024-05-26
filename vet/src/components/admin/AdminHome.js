@@ -1,4 +1,4 @@
-import './adminHome.css'
+// import './adminHome.css'
 
 // have components for reminders
 // notifications
