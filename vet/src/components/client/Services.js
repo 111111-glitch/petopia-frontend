@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Services.css';
 
 const Services = ({ addToCart }) => {
   const [services, setServices] = useState([]);
-  const [selectedService, setSelectedService] = useState(null);
+ 
   const [sortOption, setSortOption] = useState('Default');
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch('/userproducts')
@@ -21,42 +23,42 @@ const Services = ({ addToCart }) => {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}` 
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
       });
       if (response.ok) {
         const data = await response.json();
-        console.log(data)
+        console.log(data);
       } else {
         console.log('Failed to fetch cart items');
       }
     } catch (error) {
       console.log('An error occurred while fetching cart items', error.message);
     } finally {
-      console.log("completed the operation")
+      console.log("completed the operation");
     }
   };
 
   const handleServiceClick = (service) => {
-    setSelectedService(service);
+    navigate(`/service/${service.id}`);
   };
 
   const handleAddToCart = async (service) => {
     try {
-      console.log(service)
+      console.log(service);
       const response = await fetch('/userCart', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}` 
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
         },
         body: JSON.stringify({ product_id: service.id, quantity: 1 }),
       });
 
       if (response.ok) {
         const cartItem = await response.json();
-        console.log("Added successfully", cartItem)
-        fetchCartItems()
+        console.log("Added successfully", cartItem);
+        fetchCartItems();
       } else {
         console.error('Failed to add item to cart');
       }
@@ -105,11 +107,11 @@ const Services = ({ addToCart }) => {
               <p>Price: ksh{service.price}</p>
               <p>{service.description}</p>
             </div>
-            {selectedService && selectedService.id === service.id && (
+            
               <div className='addToCart'>
                 <button onClick={() => handleAddToCart(service)}>Add to Cart</button>
               </div>
-            )}
+            
           </div>
         ))}
       </div>

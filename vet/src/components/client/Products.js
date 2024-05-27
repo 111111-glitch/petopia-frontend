@@ -1,10 +1,13 @@
+
+
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Product.css';
 
 const Products = ({ addToCart }) => {
   const [products, setProducts] = useState([]);
-  const [selectedProduct, setSelectedProduct] = useState(null);
   const [sortOption, setSortOption] = useState('Default');
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch('/userproducts')
@@ -16,53 +19,47 @@ const Products = ({ addToCart }) => {
   }, []);
 
   const handleProductClick = (product) => {
-    setSelectedProduct(product);
+    navigate(`/product/${product.id}`);
   };
 
   const fetchCartItems = async () => {
     try {
-        const response = await fetch('/userCart', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}` 
-            }
-        });
-        if (response.ok) {
-            const data = await response.json();
-            console.log(data)
-        } else{
-            console.log('Failed to fetch cart items');
+      const response = await fetch('/userCart', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
+      });
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+      } else {
+        console.log('Failed to fetch cart items');
+      }
     } catch (error) {
-        console.log('An error occurred while fetching cart items', error.message);
+      console.log('An error occurred while fetching cart items', error.message);
     } finally {
-       console.log("completed the operation")
+      console.log("completed the operation");
     }
-};
+  };
 
   const handleAddToCart = async (product) => {
     try {
-      console.log(product)
+      console.log(product);
       const response = await fetch('/userCart', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}` // Assuming JWT is stored in localStorage
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
         },
         body: JSON.stringify({ product_id: product.id, quantity: 1 }),
       });
 
       if (response.ok) {
         const cartItem = await response.json();
-        console.log("Added successfully",cartItem)
-        
-        // addToCart(cartItem);
-
-        fetchCartItems()
-
-///
-
+        console.log("Added successfully", cartItem);
+        fetchCartItems();
       } else {
         console.error('Failed to add item to cart');
       }
@@ -111,11 +108,9 @@ const Products = ({ addToCart }) => {
               <p>{product.description}</p>
               <p>Price: ksh{product.price}</p>
             </div>
-            {selectedProduct && selectedProduct.id === product.id && (
-              <div className="addToCart">
-                <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
-              </div>
-            )}
+            <div className="addToCart">
+              <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
+            </div>
           </div>
         ))}
       </div>
