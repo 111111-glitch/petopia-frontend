@@ -19,6 +19,7 @@ import PatchProduct from './components/admin/PatchProduct';
 import PatchService from './components/admin/PatchService';
 import History from './components/admin/History';
 import ProductDetail from './components/client/ProductPage';
+import ServicePage from './components/client/ServicePage';
 import Cart from './components/client/Cart';
 import AdminHome from './components/admin/AdminHome';
 
@@ -34,9 +35,10 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/products' element={<Products />} />
-        <Route path='/products/:id' component={ProductDetail} />
+        <Route path='/products/:id' element={ProductDetail} />
         <Route path='/services' element={<Services />} />
         <Route path='/cart' element={<Cart />} />
+        <Route path='/services/:id' celement={ServicePage} />
         
       </Routes>
 
