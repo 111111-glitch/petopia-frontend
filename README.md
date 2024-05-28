@@ -1,75 +1,63 @@
-# Getting Started with Create React App
+# PETOPIA
+## Front-end
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Problem Statement
+Sometimes you are seated at home and all of a sudden, mac, your pet cat is hungry. You look into the can where you store her food and realize after the next serving, all hell will break loose. You need a quick way to order for a refill in time.
 
-## Available Scripts
+### Solution
+Create an e-commerce application that will provide pet products and services closely to the user.
 
-In the project directory, you can run:
+### Features
+#### Admin
+An administrator will be able to to perform the following actions:
+Login
+Add a new service, eg pet grooming, dog vaccination etc.
+Add a new product, eg. fish pellets, chicken vaccine etc.
+Update, and delete services / products.
+Approve / Disapprove service requests
+Approve / Disapprove product orders.
+View a history of purchases made and services requested.
 
-### `npm start`
+#### User
+A user is one who is looking to get veterinary services.
+Auth (Login / Register)
+View all services provided in the shop
+View all products offered by the shop
+Add products to cart.
+Order a service
+View all cart items
+Checkout items from the cart
+Pay for services and products.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Technical expectations
+Backend: Flask Python
+Testing: ​Pytest
+Database: MySQL
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Project Team
+- Denis Mutunga - Backend 
 
-### `npm test`
+-Ridhwan Mohamed - Backend
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+-Julius Makari - Backend
 
-### `npm run build`
+-Melissa Wanjiku - Frontend
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+-Leila Abdi - Frontend
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+-Joseph Wambui 3 - Frontend
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### Technologies Used
+React JS, Vercel. 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Setup Instructions
+Clone the repository to your local machine. Set up the backend server. Connect the frontend to the backend by configuring appropriate API endpoints. Run the application and start exploring pet products and services!
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### PETOPIA! For a satisfactory pet owner experience!
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### License
+#### Copyright (c) 2024 Denis Mutunga - Backend, Ridhwan Mohamed - Backend, Julius Makari - Backend, Melissa Wanjiku - Frontend, Leila Abdi - Frontend, Joseph Wambui - Frontend.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# petopia-frontend
-
-#  $%$ lshs
-
-Any contributions are most welcome
+#### !!Any contributions and recommendations are most welcome!!
