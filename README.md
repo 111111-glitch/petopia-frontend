@@ -72,6 +72,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 #  $%$ lshs
 
-#Readme
-1.2
-
+Any contributions are most welcome
